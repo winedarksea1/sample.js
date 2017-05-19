@@ -1,0 +1,56 @@
+body {
+  background-color: azure;
+}
+
+#container {
+  margin: 0 auto 0 auto;
+  border: 1px solid black;
+  background-color: pink;
+  width: 80%;
+  height: 100%;
+}
+
+  #header-container {
+    text-align: center;
+  }
+
+    #header-container header h2 {
+      color: #343434;;
+    }
+/*
+  #player-container {
+    margin: 0 auto 0 auto;
+    width: 80%;
+    height: 30%;
+  }*/
+
+    #player {
+      margin: 0 auto 0 auto;
+    }
+
+    .cue-list-element {
+      list-style-type: none;
+    }
+
+
+@media screen and (max-width: 740px) {
+
+
+    #container {
+      margin: 0;
+      width: inherit;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    #container {
+      margin: 0;
+      width: inherit;
+    }
+
+      #player {
+        width: inherit;
+      }
+}

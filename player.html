@@ -1,0 +1,45 @@
+<!DOCTYPE>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A Vimeo Player Demo</title>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <link rel="stylesheet" href="player.css" />
+  </head>
+
+  <body>
+    <div id="container">
+
+      <div id="header-container">
+        <header>
+          <h2>Vimeo Player</h2>
+        </header>
+      <div>
+
+      <div id="player-container">
+        <iframe id="player" src="https://player.vimeo.com/video/76979871" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+
+      <div id="form-container">
+        <textarea id="cue-input" name="cue-input" ></textarea>
+        <button id="add-cue-button" onclick="onCueSubmit()">Add Cue</button>
+        <select id="timestamp-selector-begin"></select>
+        <span>Cue Begin</span>
+        <select id="timestamp-selector-end"></select>
+        <span>Cue End</span>
+
+      </div>
+
+      <div id="cue-list-container">
+        <ul id="cue-list"></ul>
+      </div>
+      
+      <button id="log-cues" onclick="logCues()">Log Cues</button>
+    </div>
+
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="player.js"></script>
+  </body>
+</html>
