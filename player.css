@@ -1,11 +1,11 @@
 body {
-  background-color: azure;
+  background-color: #F5F5F5;
 }
 
 #container {
   margin: 0 auto 0 auto;
-  border: 1px solid black;
-  background-color: pink;
+  border: 1px solid #D3D3D3;
+  background-color: #F2F4F5;;
   width: 80%;
   height: 100%;
 }
@@ -26,6 +26,24 @@ body {
 
     #player {
       margin: 0 auto 0 auto;
+      position: relative;
+      z-axis: 0;
+    }
+
+    #overlay {
+      border: 1px solid black;
+      background-color: azure;
+      position: absolute;
+      top: 360px;
+      right: 27%;
+      z-axis: 1;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+    .visible {
+      visibility: visible;
     }
 
     .cue-list-element {
