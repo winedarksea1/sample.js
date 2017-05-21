@@ -80,13 +80,27 @@ function onCueSubmit () {
 
 }
 
+// function addToCues (message) {
+//   cues[timestampSelectorBegin.value] = new Cue(timestampSelectorBegin.value, timeStampSelectorEnd.value, message);
+//   var list = '';
+//   for (var key in cues) {
+//     list += '<div class="cue-list-element-container is-floated">' + '<div class="cue-list-message">' + cues[key].message + '</div>' + '<div>' + key + '</div>' + '</div>';
+//   }
+//   cueList.innerHTML = list;
+// }
+
 function addToCues (message) {
-  cues[timestampSelectorBegin.value] = new Cue(timestampSelectorBegin.value, timeStampSelectorEnd.value, message);
-  var list = '';
-  for (var key in cues) {
-    list += '<li class="cue-list-element">' + cues[key].message + '</li>';
-  }
-  cueList.innerHTML = list;
+  var newCue = new Cue(timestampSelectorBegin.value, timeStampSelectorEnd.value, message);
+  cues[timestampSelectorBegin.value] = newCue;
+  var newCueDiv = document.createElement('div');
+  newCueDiv.className = 'is-floated';
+  var newMessage = document.createElement('div');
+  newMessage.innerHTML = newCue.message;
+  var newTimestamp = document.createElement('div');
+  newTimestamp.innerHTML = newCue.begin;
+  newCueDiv.appendChild(newMessage);
+  newCueDiv.appendChild(newTimestamp);
+  document.getElementById('cue-container').appendChild(newCueDiv);
 }
 
 function addToCuesTimestamp (message) {
@@ -97,9 +111,10 @@ function addToCuesTimestamp (message) {
   .then(function () {
     var list = '';
     for (var key in cues) {
-      list += '<li class="cue-list-element">' + cues[key].message + '</li>';
+      list += '<div class="cue-list-element">' + cues[key].message + '</li>';
     }
-    cueList.innerHTML = list;
+
+    // cueList.innerHTML = list;
   })
   .catch(console.error('error'));
 }
