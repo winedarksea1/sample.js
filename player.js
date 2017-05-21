@@ -12,6 +12,8 @@ var cues = {};
 var cueCount = 0;
 var cueId = 0;
 
+var timeoutId;
+
 function Cue (begin, end, message) {
   this.begin = begin;
   this.end = end;
@@ -38,10 +40,23 @@ player.getVideoTitle()
 .then(function (title) {
   console.log('title: ', title);
 });
+
 player.on('timeupdate', function (e) {
   // console.log(e);
   if (cues[String(Math.floor(e.seconds))]) {
-    console.log("Cue Fired");
+    cueOverlay.innerHTML = cues[String(Math.floor(e.seconds))].message;
+    cueVisible();
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(cueHidden, 5000);
+    } else {
+      timeoutId = setTimeout(cueHidden, 5000);
+      console.log("Cue Fired");
+    }
+  }
+
+  if (Math.floor(e.seconds) === 25) {
+    console.log("timeoutId: " + timeoutId);
   }
 });
 //////////////////////
@@ -51,12 +66,12 @@ player.on('timeupdate', function (e) {
 function onCueSubmit () {
   console.log(cueInputField.value);
   // cues[++cueCount] = cueInputField.value;
-  if (Number(timestampSelectorBegin.value) > Number(timeStampSelectorEnd.value)) {
-    alert("Invalid Range");
-  } else {
-    addToCues(cueInputField.value);
-    cueInputField.value = '';
-  }
+  // if (Number(timestampSelectorBegin.value) > Number(timeStampSelectorEnd.value)) {
+  //   alert("Invalid Range");
+  // } else {
+  addToCues(cueInputField.value);
+  cueInputField.value = '';
+  //}
   // var list = '';
   // for (var key in cues) {
   //   list += '<li class="cue-list-element">' + cues[key] + '</li>';
@@ -101,4 +116,12 @@ function toggleCueVisibility () {
   } else {
     cues.className = 'hidden';
   }
+}
+
+function cueVisible () {
+  cueOverlay.className = 'visible';
+}
+
+function cueHidden () {
+  cueOverlay.className = 'hidden';
 }
