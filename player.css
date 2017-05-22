@@ -20,11 +20,55 @@
 .is-floated {
   float: left;
   clear: both;
+  border: 1px solid #D3D3D3;
 }
+
+  .cue-timestamp {
+    float: right;
+  }
 
 body {
   background-color: #F5F5F5;
 }
+
+/*button {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  padding: 15px 45px;
+  font-size: 48px;
+  font-family: "Bitter",serif;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+button:focus {
+  outline: none
+}*/
+
+.gradient button {
+  color: white;
+  /*text-shadow: -2px 2px #346392;*/
+  background-color: #4bf;
+  /*background-image: linear-gradient(top, #6496c8, #346392);*/
+  /*box-shadow: inset 0 0 0 1px #27496d;*/
+  border: none;
+  border-radius: 15px;
+  width: 10%;
+  height: 5%;
+}
+
+.gradient button:hover,
+.gradient button.hover {
+  /*box-shadow: inset 0 0 0 1px #27496d,0 5px 15px #193047;*/
+  cursor: pointer;
+}
+
+/*.gradient button:active,
+.gradient button.active {
+  box-shadow: inset 0 0 0 1px #27496d,inset 0 5px 30px #193047;
+}*/
 
 .container {
   margin: 0 auto 0 auto;
@@ -94,6 +138,47 @@ body {
         text-align: center;
       }
 
+      .is-floated {
+        float: left;
+        clear: both;
+        margin-top: 1%;
+        margin-left: 1px;
+        border: 1px solid #D3D3D3;
+        border-radius: 15px;
+        width: 25%;
+        position: relative;
+      }
+
+        .cue-message {
+          margin-left: 5%;
+          margin-right: 5%;
+          overflow: scroll;
+        }
+
+        .cue-timestamp {
+          margin-top: 5%;
+          text-align: right;
+        }
+
+        .cue-button {
+          margin: 1px;
+          color: white;
+          background-color: #4bf;
+          border: none;
+          opacity: 0.75;
+          border-radius: 15px;
+          float: right;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+
+        .cue-button:hover {
+          cursor: pointer;
+        }
+
+
+/*These can go I think*/
     .util-buttons {
       width: inherit;
       text-align: center;

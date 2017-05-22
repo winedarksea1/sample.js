@@ -91,16 +91,31 @@ function onCueSubmit () {
 
 function addToCues (message) {
   var newCue = new Cue(timestampSelectorBegin.value, timeStampSelectorEnd.value, message);
-  cues[timestampSelectorBegin.value] = newCue;
   var newCueDiv = document.createElement('div');
-  newCueDiv.className = 'is-floated';
   var newMessage = document.createElement('div');
-  newMessage.innerHTML = newCue.message;
   var newTimestamp = document.createElement('div');
+  var newCueButton = document.createElement('button');
+  if (cues[timestampSelectorBegin.value]) overrideCue(timestampSelectorBegin.value);
+  cues[timestampSelectorBegin.value] = newCue;
+  newCueDiv.className = 'is-floated';
+  newCueDiv.id = newCue.begin;
+  newMessage.innerHTML = newCue.message;
+  newMessage.className = 'cue-message';
   newTimestamp.innerHTML = newCue.begin;
+  newTimestamp.className = 'cue-timestamp';
+  newCueButton.innerHTML = 'X';
+  newCueButton.className = 'cue-button';
+  newCueButton.onclick = removeCue;
+  newCueButton.id = 'cue-button-' + newCue.begin;
   newCueDiv.appendChild(newMessage);
+  newCueDiv.appendChild(newCueButton);
   newCueDiv.appendChild(newTimestamp);
   document.getElementById('cue-container').appendChild(newCueDiv);
+}
+
+function overrideCue (beginStamp) {
+  delete cues[beginStamp];
+  document.getElementById(beginStamp).remove();
 }
 
 function addToCuesTimestamp (message) {
@@ -117,6 +132,13 @@ function addToCuesTimestamp (message) {
     // cueList.innerHTML = list;
   })
   .catch(console.error('error'));
+}
+
+function removeCue (e) {
+  var cueId = e.target.id.slice(11);
+  var parentDiv = document.getElementById(cueId);
+  delete cues[cueId];
+  parentDiv.remove();
 }
 
 function logCues () {
