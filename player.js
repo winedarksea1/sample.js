@@ -10,15 +10,14 @@ var cueOverlay = document.getElementById('overlay');
 
 var cues = {};
 var cueCount = 0;
-var cueId = 0;
+// var cueId = 0;
 
 var timeoutId;
 
-function Cue (begin, end, message) {
+function Cue (begin, message) {
   this.begin = begin;
-  this.end = end;
   this.message = message;
-  this.id = ++cueId;
+  // this.id = ++cueId;
 }
 
 function buildSelect (selector, n) {
@@ -29,7 +28,7 @@ function buildSelect (selector, n) {
   }
 }
 buildSelect(timestampSelectorBegin, 120);
-buildSelect(timeStampSelectorEnd, 120);
+// buildSelect(timeStampSelectorEnd, 120);
 
 //EVENTS
 player.on('play', function () {
@@ -90,7 +89,7 @@ function onCueSubmit () {
 // }
 
 function addToCues (message) {
-  var newCue = new Cue(timestampSelectorBegin.value, timeStampSelectorEnd.value, message);
+  var newCue = new Cue(timestampSelectorBegin.value, message);
   var newCueDiv = document.createElement('div');
   var newMessage = document.createElement('div');
   var newTimestamp = document.createElement('div');
@@ -118,21 +117,21 @@ function overrideCue (beginStamp) {
   document.getElementById(beginStamp).remove();
 }
 
-function addToCuesTimestamp (message) {
-  return player.getCurrentTime()
-  .then(function (seconds) {
-    cues[seconds] = new Cue(seconds, message);
-  })
-  .then(function () {
-    var list = '';
-    for (var key in cues) {
-      list += '<div class="cue-list-element">' + cues[key].message + '</li>';
-    }
-
-    // cueList.innerHTML = list;
-  })
-  .catch(console.error('error'));
-}
+// function addToCuesTimestamp (message) {
+//   return player.getCurrentTime()
+//   .then(function (seconds) {
+//     cues[seconds] = new Cue(seconds, message);
+//   })
+//   .then(function () {
+//     var list = '';
+//     for (var key in cues) {
+//       list += '<div class="cue-list-element">' + cues[key].message + '</li>';
+//     }
+//
+//     // cueList.innerHTML = list;
+//   })
+//   .catch(console.error('error'));
+// }
 
 function removeCue (e) {
   var cueId = e.target.id.slice(11);

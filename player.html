@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    <div id="top-bar"></div>
     <div class="container">
 
       <div id="header-container">
@@ -24,11 +25,13 @@
 
       <div id="form-container" class="gradient">
         <textarea id="cue-input" name="cue-input" ></textarea>
+        <div id="cue-add-container">
         <button id="add-cue-button" onclick="onCueSubmit()">Add Cue</button>
         <select id="timestamp-selector-begin"></select>
         <span>Cue Begin</span>
-        <select id="timestamp-selector-end"></select>
-        <span>Cue End</span>
+        </div>
+        <!-- <select id="timestamp-selector-end"></select>
+        <span>Cue End</span> -->
 
       </div>
     </div>
