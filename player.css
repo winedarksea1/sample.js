@@ -1,3 +1,4 @@
+/*Clearfix*/
 .group:before,
 .group:after {
   content: "";
@@ -10,63 +11,9 @@
   zoom: 1;
 }
 
-
-/*.is-floated {
-  float: left;
-  clear: both;
-  border: 1px solid #D3D3D3;
-}*/
-
-  /*.cue-timestamp {
-    float: right;
-  }*/
-
-/*body {
-  background-color: #F5F5F5;
-}*/
-
 body {
   background-color: white;
 }
-
-/*button {
-  display: inline-block;
-  margin: 0 10px 0 0;
-  padding: 15px 45px;
-  font-size: 48px;
-  font-family: "Bitter",serif;
-  line-height: 1.8;
-  appearance: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-button:focus {
-  outline: none
-}*/
-
-.gradient button {
-  color: white;
-  /*text-shadow: -2px 2px #346392;*/
-  background-color: #4bf;
-  /*background-image: linear-gradient(top, #6496c8, #346392);*/
-  /*box-shadow: inset 0 0 0 1px #27496d;*/
-  border: none;
-  border-radius: 15px;
-  width: 10%;
-  height: 30px;
-}
-
-.gradient button:hover,
-.gradient button.hover {
-  /*box-shadow: inset 0 0 0 1px #27496d,0 5px 15px #193047;*/
-  cursor: pointer;
-}
-
-/*.gradient button:active,
-.gradient button.active {
-  box-shadow: inset 0 0 0 1px #27496d,inset 0 5px 30px #193047;
-}*/
 
 #top-bar {
   width: inherit;
@@ -80,7 +27,6 @@ button:focus {
   background-color: #F2F4F5;;
   width: 80%;
   padding-bottom: 3%;
-  /*height: 100%;*/
 }
 
   #header-container {
@@ -106,24 +52,31 @@ button:focus {
       border: 1px solid black;
       background-color: azure;
       position: absolute;
-      /*top: 360px;*/
-      /*right: 27%;*/
       z-axis: 1;
       opacity: 0.95;
       bottom: 80%;
       left: 25%;
     }
 
-    /*#overlay {
-      bottom: 80%;
-      left: 25%;
-    }*/
-
     .hidden {
       visibility: hidden;
     }
     .visible {
       visibility: visible;
+    }
+
+    .gradient button {
+      color: white;
+      background-color: #4bf;
+      border: none;
+      border-radius: 15px;
+      width: 10%;
+      height: 30px;
+    }
+
+    .gradient button:hover,
+    .gradient button.hover {
+      cursor: pointer;
     }
 
     #form-container {
@@ -182,7 +135,6 @@ button:focus {
         border: none;
         opacity: 0.75;
         border-radius: 15px;
-        /*float: right;*/
         position: absolute;
         top: 0;
         right: 0;
@@ -191,12 +143,6 @@ button:focus {
       .cue-button:hover {
         cursor: pointer;
       }
-
-      /*.util-buttons {
-        text-align: center;
-      }*/
-
-
 
 @media screen and (max-width: 740px) {
 

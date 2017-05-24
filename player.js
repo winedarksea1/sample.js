@@ -9,14 +9,12 @@ var cueList = document.getElementById('cue-list');
 var cueOverlay = document.getElementById('overlay');
 
 var cues = {};
-// var cueCount = 0;
 
 var timeoutId;
 
 function Cue (begin, message) {
   this.begin = begin;
   this.message = message;
-  // this.id = ++cueId;
 }
 
 function buildSelect (selector, n) {
@@ -39,7 +37,6 @@ player.getVideoTitle()
 });
 
 player.on('timeupdate', function (e) {
-  // console.log(e);
   if (cues[String(Math.floor(e.seconds))]) {
     cueOverlay.innerHTML = cues[String(Math.floor(e.seconds))].message;
     cueVisible();
@@ -48,43 +45,17 @@ player.on('timeupdate', function (e) {
       timeoutId = setTimeout(cueHidden, 5000);
     } else {
       timeoutId = setTimeout(cueHidden, 5000);
-      console.log("Cue Fired");
     }
   }
-  //
-  // if (Math.floor(e.seconds) === 25) {
-  //   console.log("timeoutId: " + timeoutId);
-  // }
+
 });
 //////////////////////
 
-
-
 function onCueSubmit () {
-  console.log(cueInputField.value);
-  // cues[++cueCount] = cueInputField.value;
-  // if (Number(timestampSelectorBegin.value) > Number(timeStampSelectorEnd.value)) {
-  //   alert("Invalid Range");
-  // } else {
   addToCues(cueInputField.value);
   cueInputField.value = '';
-  //}
-  // var list = '';
-  // for (var key in cues) {
-  //   list += '<li class="cue-list-element">' + cues[key] + '</li>';
-  // }
-  // cueList.innerHTML = list;
 
 }
-
-// function addToCues (message) {
-//   cues[timestampSelectorBegin.value] = new Cue(timestampSelectorBegin.value, timeStampSelectorEnd.value, message);
-//   var list = '';
-//   for (var key in cues) {
-//     list += '<div class="cue-list-element-container is-floated">' + '<div class="cue-list-message">' + cues[key].message + '</div>' + '<div>' + key + '</div>' + '</div>';
-//   }
-//   cueList.innerHTML = list;
-// }
 
 function addToCues (message) {
   var newCue = new Cue(timestampSelectorBegin.value, message);
@@ -115,42 +86,12 @@ function overrideCue (beginStamp) {
   document.getElementById(beginStamp).remove();
 }
 
-// function addToCuesTimestamp (message) {
-//   return player.getCurrentTime()
-//   .then(function (seconds) {
-//     cues[seconds] = new Cue(seconds, message);
-//   })
-//   .then(function () {
-//     var list = '';
-//     for (var key in cues) {
-//       list += '<div class="cue-list-element">' + cues[key].message + '</li>';
-//     }
-//
-//     // cueList.innerHTML = list;
-//   })
-//   .catch(console.error('error'));
-// }
-
 function removeCue (e) {
   var cueId = e.target.id.slice(11);
   var parentDiv = document.getElementById(cueId);
   delete cues[cueId];
   parentDiv.remove();
 }
-
-// function logCues () {
-//   console.log(cues);
-//   console.log(typeof timestampSelectorBegin.value);
-// }
-
-// function toggleCueVisibility () {
-//   var cues = document.getElementById('overlay');
-//   if (cues.className === 'hidden') {
-//     cues.className = 'visible';
-//   } else {
-//     cues.className = 'hidden';
-//   }
-// }
 
 function cueVisible () {
   cueOverlay.className = 'visible';
